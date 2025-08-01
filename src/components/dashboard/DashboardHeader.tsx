@@ -17,9 +17,9 @@ export function DashboardHeader() {
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">VM</span>
+            <span className="text-white font-bold text-sm">VAD</span>
           </div>
-          <h1 className="text-xl font-semibold text-foreground">VendorMarket</h1>
+          <h1 className="text-xl font-semibold text-foreground"></h1>
         </div>
       </div>
 
@@ -50,8 +50,8 @@ export function DashboardHeader() {
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium">John Doe</p>
-                <p className="text-xs text-muted-foreground">john@vendorshop.com</p>
+                <p className="text-sm font-medium">Favor Max</p>
+                <p className="text-xs text-muted-foreground">favormax@vendorshop.com</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
