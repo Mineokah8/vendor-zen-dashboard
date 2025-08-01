@@ -14,17 +14,18 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useLocation } from "react-router-dom";
 
 const menuItems = [
-  { icon: BarChart3, label: "Dashboard", active: true },
-  { icon: Package, label: "Products" },
-  { icon: ShoppingCart, label: "Orders" },
-  { icon: Users, label: "Customers" },
-  { icon: TrendingUp, label: "Analytics" },
-  { icon: MessageSquare, label: "Messages" },
-  { icon: DollarSign, label: "Payouts" },
-  { icon: Megaphone, label: "Promotions" },
-  { icon: Settings, label: "Settings" },
+  { icon: BarChart3, label: "Dashboard", path: "/" },
+  { icon: Package, label: "Products", path: "/products" },
+  { icon: ShoppingCart, label: "Orders", path: "/orders" },
+  { icon: Users, label: "Customers", path: "/customers" },
+  { icon: TrendingUp, label: "Analytics", path: "/analytics" },
+  { icon: MessageSquare, label: "Messages", path: "/messages" },
+  { icon: DollarSign, label: "Payouts", path: "/payouts" },
+  { icon: Megaphone, label: "Promotions", path: "/promotions" },
+  { icon: Settings, label: "Settings", path: "/settings" },
 ];
 
 interface DashboardSidebarProps {
@@ -33,6 +34,8 @@ interface DashboardSidebarProps {
 }
 
 export function DashboardSidebar({ collapsed, onToggle }: DashboardSidebarProps) {
+  const location = useLocation();
+  
   return (
     <aside
       className={cn(
@@ -59,12 +62,13 @@ export function DashboardSidebar({ collapsed, onToggle }: DashboardSidebarProps)
         {menuItems.map((item, index) => (
           <Button
             key={index}
-            variant={item.active ? "default" : "ghost"}
+            variant={location.pathname === item.path ? "default" : "ghost"}
             className={cn(
               "w-full justify-start h-10 transition-all duration-200",
               collapsed ? "px-2" : "px-3",
-              item.active && "bg-primary text-primary-foreground"
+              location.pathname === item.path && "bg-primary text-primary-foreground"
             )}
+            onClick={() => window.location.href = item.path}
           >
             <item.icon className={cn("h-5 w-5", collapsed ? "mx-auto" : "mr-3")} />
             {!collapsed && <span className="text-sm font-medium">{item.label}</span>}
